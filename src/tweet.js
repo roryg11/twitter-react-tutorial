@@ -34,11 +34,10 @@ var Twitter = React.createClass({
   //   this.loadTweetsFromServer();
   // },
   render: function () {
-    return (
-      <div className="twitter">
+    return (<div className="twitter">
         <h1>Tweets</h1>
         <TweetForm />
-        <TweetList tweets ={this.props.twitterList}/>
+        <TweetList data={this.props.data}/>
       </div>
     );
   }
@@ -59,7 +58,8 @@ var TweetList = React.createClass({
     return (
       <div className="tweetList">
         <h1>The Tweet List</h1>
-        <p>{this.props.tweets}</p>
+        <Tweet author={this.props.data[0].author} text={this.props.data[0].text}/>
+        <Tweet author={this.props.data[1].author} text={this.props.data[1].text}/>
       </div>
     );
   }
@@ -69,13 +69,14 @@ var Tweet = React.createClass({
   render: function () {
     return (
       <div className="tweet">
-        {/* Render some text here */}
+        <h4>{this.props.author}</h4>
+        <p>{this.props.text}</p>
       </div>
     );
   }
 });
 
 ReactDOM.render(
-  <Twitter twitterList={data}/>,
+  <Twitter data={data}/>,
   document.getElementById('tweets')
 );
