@@ -2,11 +2,11 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 var styles = {
-	open: { 
+	open: {
 		display: 'block'
 	},
-	closed: { 
-		display: 'none' 
+	closed: {
+		display: 'none'
 	}
 };
 
@@ -14,17 +14,17 @@ var DropdownMenu = React.createClass({
 	getInitialState: function() {
 		return { open: false };
 	},
-	// Toggle DropdownMenu's open/closed state 
+	// Toggle DropdownMenu's open/closed state
 	toggleMenu: function() {
 		this.setState({ open: !this.state.open });
 	},
 	render: function() {
 		return (
 			<div className='dropdown-wrapper' onClick={ this.toggleMenu }>
-				<button className='btn btn-info'>
+				<button className={ 'btn ' + (this.state.open? 'btn-danger' : 'btn-info')}>
 					Dropdown Menu
 				</button>
-				<ul>
+				<ul style={ this.state.open? styles.open : styles.closed}>
 					<li>Option #1</li>
 					<li>Option #2</li>
 					<li>Option #3</li>
