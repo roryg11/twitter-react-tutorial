@@ -55,11 +55,17 @@ var TweetForm = React.createClass({
 
 var TweetList = React.createClass({
   render: function () {
+    var tweets =  this.props.data.map(function(obj){
+      return <Tweet author={object.author} text={obj.text}/>;
+    });
+
+    console.log(tweets);
     return (
       <div className="tweetList">
         <h1>The Tweet List</h1>
-        <Tweet author={this.props.data[0].author} text={this.props.data[0].text}/>
-        <Tweet author={this.props.data[1].author} text={this.props.data[1].text}/>
+        <ul>
+          <li>{tweets}</li>
+        </ul>
       </div>
     );
   }
